@@ -3,46 +3,57 @@ FinTech Challenge 12 - Credit Risk Analysis With Logistic Regression
 
 ---
 
-## Analysis  
-TBD
+## Overview Of Analysis
 
+This is an analysis of credit risk, using a set of imbalanced borrower data to predict "healthiness" of a loan. A healthy loan is one that is likely to be paid, whereas an unhealthy loan is one which has a high risk of default. Because this data set is imbalanced, two [logistical regression]() classifier models will be created. The first will be trained with the original feature data. The second model will be trained with resampled data using the imbalanced-learn [RandomOverSampler](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.RandomOverSampler.html). Each model will then predict the same test data, and the resulting predictions will be compared.  
 
-See full analysis details in the notebook [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
-
-
-#### DataSet  
+#### DataSet Details  
 
 A single dataset was used to anlyze this space:
 - [lending_data.csv](data/lending_data.csv) containing the following features about borrowers:  
     - contains data: `loan_size | interest_rate | borrower_income | debt_to_income | num_of_accounts | derogatory_marks | total_debt | loan_status`  
+    - The `loan_status` column is used as the `y`, or prediction value. With a value of `0` signifying a healthy loan, and a value of `1` signifying an unhealthy loan.
+    - NOTE: The `loan_status` column is imbalanced, with significantly more `0` values than `1` values. See counts in table below:  
+
+| y | ValueCount Original | ValueCount Resampled |
+| --- | --- | --- |
+| `0` | 75036 | 56271 |
+| `1` | 2500 | 56271 |  
 
 
-#### Assumptions
-- Two logistic regression models will be analyzed, one predicting with original data, the second with resampled data.
-- Resampled data will use the [RandomOverSampler](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.RandomOverSampler.html) from the [imbalanced learn](https://imbalanced-learn.org/stable/index.html) module
-- Both models will predict against the same test data.
+#### ML Process
+
+1. [lending_data.csv](data/lending_data.csv) split into training and testing sets, with `y` value set from `loan_status` column.
+2. A [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), model will be created and fit with the original training data. This model will then predict using the original test data. This prediction performace will be measured by `balanced_accuracy_score`, `confusion_matrix` and `classification_report`.
+3. The original data will be resampled with the [RandomOverSampler](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.RandomOverSampler.html) from the [imbalanced learn](https://imbalanced-learn.org/stable/index.html) module. A second `LogisticRegression` model will be created, trained/fit with this resampled data. Then this resampled model will predict using the same test_data. The resampled model's predictions will be evaluated with the same metrics: `balanced_accuracy_score`, `confusion_matrix` and `classification_report`.  
 
 
-## Summary
+## Model Evaluation Results  
 
-**Original Feature Model**  
-TBD
-
-**RandomOverSampler Model**  
-TBD
-
-
-**Visual Comparison Summary**  
+**Original Data Model**  
+The logistic regression model predictions, trained with the original unbalanced data yielded:  
+- `0 - recall was .99 with a precision of 1`  
+- `1 - recall was .91 with a precision of .85`  
+- `.952 balanced accuracy score`
 
 
-Below are the `balanced_accuracy_score`, `confusion_matrix` and `classification_report` for each models performance.  
+**RandomOverSampler Data Model**  
+The logistic regression model predictions, trained with the resampled data yielded:  
+- `0 - recall was .99 with a precision of 1`  
+- `1 - recall was .99 with a precision of .84`  
+- `.993 balanced accuracy score`
+  
 
-![Original Data](media/model_orig.png)  
-![Resampled](media/model_resampled.png)  
+**Classification Report Original**  
+![Original Data](media/classification_orig.png)  
+**Classification Report Resampled**  
+![Resampled](media/classification_resampled.png)  
+
+See full implementation and notebook details in [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
+
+## SUMMARY   
 
 
-See full analysis implementation, interactive charts, and maps in the notebook [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
----
 
 ## Technologies
 
@@ -88,7 +99,7 @@ The analysis is presented within a [JupyterLab](https://jupyterlab.readthedocs.i
 # within repo root 
 $ jupyter lab
 ```
-You can now open the notebook [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
+You can now open and run the notebook [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
 
 ---
 
