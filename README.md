@@ -59,6 +59,7 @@ Of the two models, the resampled model has a higer `recall` value of `.99`, comp
 
 Therefore, I would recommend using the resampled model, with its higher recall, and nearly identcal precision for the `1` value. Though small, this is an advantage over the model fit with original data.  
 
+---
 
 ### Technologies
 
