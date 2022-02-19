@@ -15,6 +15,7 @@ A single dataset was used to anlyze this space:
     - The `loan_status` column is used as the `y`, or prediction value. With a value of `0` signifying a healthy loan, and a value of `1` signifying an unhealthy loan.
     - NOTE: The `loan_status` column is imbalanced, with significantly more `0` values than `1` values. See counts in table below:  
 
+**Value Counts**
 | y (prediction) | ValueCount (Original Data) | ValueCount (Resampled Data) |
 | --- | --- | --- |
 | `0` | 75036 | 56271 |
@@ -25,7 +26,8 @@ A single dataset was used to anlyze this space:
 
 1. [lending_data.csv](data/lending_data.csv) split into training and testing sets, with `y` value set from `loan_status` column.
 2. A [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), model will be created and fit with the original training data. This model will then predict using the original test data. This prediction performace will be measured by `balanced_accuracy_score`, `confusion_matrix` and `classification_report`.
-3. The original data will be resampled with the [RandomOverSampler](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.RandomOverSampler.html) from the [imbalanced learn](https://imbalanced-learn.org/stable/index.html) module. A second `LogisticRegression` model will be created, trained/fit with this resampled data. Then this resampled model will predict using the same test_data. The resampled model's predictions will be evaluated with the same metrics: `balanced_accuracy_score`, `confusion_matrix` and `classification_report`.  
+3. The original data will be resampled with the [RandomOverSampler](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.RandomOverSampler.html) from the [imbalanced learn](https://imbalanced-learn.org/stable/index.html) module. A second `LogisticRegression` model will be created, trained/fit with this resampled data. Then this resampled model will predict using the same test_data. The resampled model's predictions will be evaluated with the same metrics: `balanced_accuracy_score`, `confusion_matrix` and `classification_report`.
+4. The performace metrics for each approach will be compared.  
 
 
 ## Model Evaluation Results  
@@ -65,6 +67,7 @@ Therefore, I would recommend using the resampled model, with its higher recall, 
 
 This challenge uses [python](https://www.python.org/) 3.7 and the following [built-in](https://docs.python.org/3/py-modindex.html) modules:
 - [os](https://docs.python.org/3/library/os.html#module-os)
+- [pathlib](https://docs.python.org/3/library/pathlib.html)
 
 Additionally, it requires:
 - [matplotlib](https://matplotlib.org/)
