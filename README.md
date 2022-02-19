@@ -1,5 +1,5 @@
-# credit-risk-analysis
-FinTech Challenge 12 - Credit Risk Analysis With Logistic Regression
+# Credit Risk Analysis 
+FinTech Challenge 12 - Credit Risk Analyses Using Logistic Regression On Imbalanced Data
 
 ---
 
