@@ -1,5 +1,7 @@
 # Credit Risk Analysis 
-FinTech Challenge 12 - Credit Risk Analyses Using Logistic Regression On Imbalanced Data
+FinTech Challenge 12 - Credit Risk Analyses Using Logistic Regression On Imbalanced Data  
+
+See full implementation and notebook details in [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
 
 ---
 
