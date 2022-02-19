@@ -61,7 +61,7 @@ Therefore, I would recommend using the resampled model, with its higher recall, 
 
 ---
 
-### Technologies
+## Technologies
 
 This challenge uses [python](https://www.python.org/) 3.7 and the following [built-in](https://docs.python.org/3/py-modindex.html) modules:
 - [os](https://docs.python.org/3/library/os.html#module-os)
