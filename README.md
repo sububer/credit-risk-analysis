@@ -15,7 +15,7 @@ A single dataset was used to anlyze this space:
     - The `loan_status` column is used as the `y`, or prediction value. With a value of `0` signifying a healthy loan, and a value of `1` signifying an unhealthy loan.
     - NOTE: The `loan_status` column is imbalanced, with significantly more `0` values than `1` values. See counts in table below:  
 
-| y | ValueCount Original | ValueCount Resampled |
+| y (prediction) | ValueCount (Original Data) | ValueCount (Resampled Data) |
 | --- | --- | --- |
 | `0` | 75036 | 56271 |
 | `1` | 2500 | 56271 |  
@@ -51,11 +51,16 @@ The logistic regression model predictions, trained with the resampled data yield
 
 See full implementation and notebook details in [credit_risk_resampling.ipynb](app/credit_risk_resampling.ipynb)  
 
-## SUMMARY   
+## Summary   
+
+The two models performed similary, although slightly differently depending on the model trained via the original versus the resampled data. Given that of the two predictions, it is more important to find the less common data point, the `1` or unhealthy loan data, as issuing a risky loan which may default is more costly than issuing a healthy loan. Therefore, if there is any tilt, it may be best to prefer the model which does a better job at predicting the `1` values.  
+
+Of the two models, the resampled model has a higer `recall` value of `.99`, compared to the original model which has a recall of `0.91`. This is almost a 10% improvement. Meanwhile the `precision` of the resampled model for the `1` prediction does drop from `0.85` to `0.84`, which is essentially the same precision.  
+
+Therefore, I would recommend using the resampled model, with its higher recall, and nearly identcal precision for the `1` value. Though small, this is an advantage over the model fit with original data.  
 
 
-
-## Technologies
+### Technologies
 
 This challenge uses [python](https://www.python.org/) 3.7 and the following [built-in](https://docs.python.org/3/py-modindex.html) modules:
 - [os](https://docs.python.org/3/library/os.html#module-os)
